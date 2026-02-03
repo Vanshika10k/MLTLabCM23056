@@ -17,4 +17,3 @@ document.getElementById("output").innerHTML = `
 <p><b>Result:</b> CNN achieves high accuracy on MNIST dataset.</p>
 `;
 
-
