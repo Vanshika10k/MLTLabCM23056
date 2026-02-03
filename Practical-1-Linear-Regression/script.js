@@ -1,53 +1,63 @@
-console.log("=== Practical 1 : Linear Regression using TensorFlow.js ===");
+async function run() {
 
-// Synthetic Data (y = 2x)
-const xs = tf.tensor1d([1, 2, 3, 4, 5]);
-const ys = tf.tensor1d([2, 4, 6, 8, 10]);
+  console.log("ML Script Started");
 
-console.log("\nTraining Data (X):");
-xs.print();
+  // Synthetic Data (y = 2x)
+  const xs = tf.tensor1d([1,2,3,4,5]);
+  const ys = tf.tensor1d([2,4,6,8,10]);
 
-console.log("\nTraining Data (Y):");
-ys.print();
+  // Create model
+  const model = tf.sequential();
+  model.add(tf.layers.dense({ units:1, inputShape:[1] }));
 
-// Build Model
-const model = tf.sequential();
-
-model.add(tf.layers.dense({
-  units: 1,
-  inputShape: [1]
-}));
-
-// Compile Model
-model.compile({
-  optimizer: tf.train.sgd(0.1),
-  loss: "meanSquaredError"
-});
-
-// Train Model
-async function trainModel() {
-
-  console.log("\nTraining Started...\n");
-
-  await model.fit(xs, ys, {
-    epochs: 200,
-    callbacks: {
-      onEpochEnd: (epoch, logs) => {
-        if (epoch % 50 === 0) {
-          console.log(`Epoch ${epoch} -> Loss = ${logs.loss}`);
-        }
-      }
-    }
+  model.compile({
+    optimizer: tf.train.sgd(0.01),
+    loss: "meanSquaredError"
   });
 
-  console.log("\nTraining Completed!");
+  console.log("Training started...");
+  await model.fit(xs, ys, { epochs:200 });
+  console.log("Training finished");
 
-  // Prediction
-  const testInput = tf.tensor1d([6]);
-  const prediction = model.predict(testInput);
+  // Predictions
+  const preds = model.predict(xs);
 
-  console.log("\nPrediction for x = 6:");
-  prediction.print();
+  const predictedVals = Array.from(preds.dataSync());
+  const actualVals = Array.from(ys.dataSync());
+
+  console.log("Actual Values:", actualVals);
+  console.log("Predicted Values:", predictedVals);
+
+  // Scatter points
+  const points = actualVals.map((y,i)=>({
+    x: y,
+    y: predictedVals[i]
+  }));
+
+  // Ideal line
+  const line = actualVals.map(v=>({
+    x:v,
+    y:v
+  }));
+
+  // Draw graph
+  tfvis.render.scatterplot(
+    { name:"Actual vs Predicted" },
+    {
+      values:[points, line],
+      series:["Predicted","Ideal Line"]
+    },
+    {
+      xLabel:"Actual",
+      yLabel:"Predicted",
+      height:300
+    }
+  );
+
+  // Unseen input prediction
+  const unseen = model.predict(tf.tensor1d([6]));
+  console.log("Prediction for x = 6:");
+  unseen.print();
 }
 
-trainModel();
+run();
