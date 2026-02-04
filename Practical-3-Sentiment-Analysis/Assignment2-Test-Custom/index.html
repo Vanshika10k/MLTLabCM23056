@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment 2 - Testing</title>
+
+<style>
+body{
+  background:linear-gradient(135deg,#43cea2,#185a9d);
+  font-family:Arial;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  width:420px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+textarea{
+  width:100%;
+  height:80px;
+  border-radius:10px;
+  padding:10px;
+}
+
+button{
+  margin-top:10px;
+  padding:10px 25px;
+  border:none;
+  border-radius:20px;
+  background:#185a9d;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.result{
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  font-size:18px;
+  font-weight:bold;
+}
+.positive{background:#d4f7dc;color:#1e7f3c;}
+.negative{background:#ffe0e0;color:#b00020;}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>Assignment 2</h2>
+<h3>Test Custom Sentence</h3>
+
+<textarea id="text" placeholder="Enter sentence"></textarea>
+<br><br>
+<button onclick="test()">Test</button>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
