@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Assignment 2 - Overlay Labels</title>
+
+<!-- TensorFlow.js MUST load first -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.14.0/dist/tf.min.js"></script>
+
+<!-- Then MobileNet -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
+
+<style>
+body {
+    text-align:center;
+    background:#1e1e2f;
+    color:white;
+    font-family:Arial;
+}
+
+.video-container {
+    position: relative;
+    display: inline-block;
+}
+
+video, canvas {
+    width: 500px;
+}
+
+canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Assignment 2: Overlay Classification Label</h2>
+<div id="status">Loading Model...</div>
+
+<div class="video-container">
+    <video id="webcam" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

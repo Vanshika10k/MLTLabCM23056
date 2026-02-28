@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Assignment 3 - FPS & Performance Analysis</title>
+
+<!-- TensorFlow.js -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.14.0/dist/tf.min.js"></script>
+
+<!-- MobileNet -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
+
+<style>
+body {
+    text-align: center;
+    background: linear-gradient(135deg,#141e30,#243b55);
+    color: white;
+    font-family: Arial;
+}
+
+video {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.info-box {
+    margin-top: 15px;
+    font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Assignment 3: FPS & Performance Analysis</h2>
+
+<div id="status">Loading Model...</div>
+
+<video id="webcam" autoplay playsinline></video>
+
+<div class="info-box">
+    <div id="prediction"></div>
+    <div id="inferenceTime"></div>
+    <div id="fps"></div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

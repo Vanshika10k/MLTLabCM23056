@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Practical 5 - Webcam Object Detection</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- TensorFlow.js -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.14.0/dist/tf.min.js"></script>
+
+<!-- COCO-SSD Model -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: white;
+    width: 900px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.status {
+    margin: 10px 0;
+    font-weight: bold;
+    color: #e74a3b;
+}
+
+.video-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+video, canvas {
+    width: 640px;
+    height: 480px;
+    border-radius: 10px;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #4e73df;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2e59d9;
+}
+
+.output-box {
+    margin-top: 15px;
+    background: #f8f9fc;
+    padding: 12px;
+    border-radius: 8px;
+    max-height: 140px;
+    overflow-y: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🎥 Practical 5: Real-Time Object Detection</h1>
+
+    <div id="status" class="status">Model Loading...</div>
+
+    <div class="video-wrapper">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div>
+        <button onclick="startWebcam()">Start Camera</button>
+        <button onclick="stopWebcam()">Stop Camera</button>
+    </div>
+
+    <div class="output-box">
+        <h3>Detected Objects:</h3>
+        <ul id="output"></ul>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

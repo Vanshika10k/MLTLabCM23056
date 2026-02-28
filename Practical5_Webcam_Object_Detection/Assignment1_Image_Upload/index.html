@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Assignment 1 - MobileNet Classification</title>
+
+<!-- TensorFlow.js -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.14.0/dist/tf.min.js"></script>
+
+<!-- MobileNet Model -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+}
+
+video {
+    width: 400px;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#output {
+    margin-top: 15px;
+    font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Assignment 1: MobileNet Classification</h2>
+<div id="status">Model Loading...</div>
+
+<video id="webcam" autoplay playsinline></video>
+<br>
+<button onclick="startCamera()">Start Camera</button>
+
+<div id="output"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
