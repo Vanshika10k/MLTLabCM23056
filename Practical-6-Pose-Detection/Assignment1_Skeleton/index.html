@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Assignment 1 - Pose Skeleton</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.14.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+
+<style>
+#container { position: relative; width:640px; height:480px; }
+video, canvas { position:absolute; top:0; left:0; }
+.info { margin-top:10px; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<h2>Pose Detection - 17 Keypoints</h2>
+
+<div id="container">
+  <video id="video" width="640" height="480" autoplay playsinline></video>
+  <canvas id="canvas" width="640" height="480"></canvas>
+</div>
+
+<div class="info" id="confidence"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

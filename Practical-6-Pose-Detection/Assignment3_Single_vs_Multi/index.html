@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Assignment 3 - Single vs Multi Pose</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.14.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+
+<style>
+body { font-family: Arial; text-align:center; }
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.pose-box {
+  position: relative;
+  width: 400px;
+  height: 300px;
+}
+
+video, canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Assignment 3: Single Pose vs Multi Pose</h2>
+
+<div class="container">
+
+  <div>
+    <h3>Single Pose</h3>
+    <div class="pose-box">
+      <video id="video1" width="400" height="300" autoplay playsinline></video>
+      <canvas id="canvas1" width="400" height="300"></canvas>
+    </div>
+    <p id="fps1">FPS: 0</p>
+  </div>
+
+  <div>
+    <h3>Multi Pose</h3>
+    <div class="pose-box">
+      <video id="video2" width="400" height="300" autoplay playsinline></video>
+      <canvas id="canvas2" width="400" height="300"></canvas>
+    </div>
+    <p id="fps2">FPS: 0</p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
