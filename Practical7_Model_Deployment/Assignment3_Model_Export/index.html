@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Assignment 3 - Export Model</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#f7971e,#ffd200);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+text-align:center;
+width:350px;
+box-shadow:0px 10px 25px rgba(0,0,0,0.3);
+}
+
+button{
+padding:10px 20px;
+margin:10px;
+border:none;
+background:#f7971e;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Export Model</h2>
+
+<button onclick="trainModel()">Train Model</button>
+<button onclick="exportModel()">Export Model</button>
+
+<p id="status"></p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

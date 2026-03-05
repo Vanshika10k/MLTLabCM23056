@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Practical 7 - Model Deployment</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:linear-gradient(135deg,#4e73df,#1cc88a);
+color:white;
+padding:40px;
+}
+
+.container{
+background:white;
+color:black;
+padding:20px;
+border-radius:12px;
+display:inline-block;
+}
+
+button{
+padding:10px;
+margin:10px;
+border:none;
+background:#4e73df;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+input{
+padding:8px;
+margin-top:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Deploy Model in Browser</h1>
+
+<div class="container">
+
+<p id="status">Model not loaded</p>
+
+<button onclick="trainModel()">Train Model</button>
+<button onclick="saveModel()">Save Model</button>
+<button onclick="loadModel()">Load Model</button>
+
+<br>
+
+<input type="number" id="inputValue" placeholder="Enter number">
+
+<button onclick="predict()">Predict</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Assignment 2 - Load Model</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#667eea,#764ba2);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+
+.card{
+background:white;
+color:black;
+padding:30px;
+border-radius:15px;
+text-align:center;
+width:350px;
+box-shadow:0px 10px 25px rgba(0,0,0,0.3);
+}
+
+input{
+padding:10px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+border:none;
+background:#667eea;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Load Model & Predict</h2>
+
+<button onclick="loadModel()">Load Model</button>
+
+<br>
+
+<input type="number" id="inputValue" placeholder="Enter value">
+
+<br>
+
+<button onclick="predict()">Predict</button>
+
+<p id="result"></p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
