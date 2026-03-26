@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Smart AI Assistant</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Segoe UI;
+background:linear-gradient(135deg,#fff3a0,#ffd86f,#fc6262);
+}
+
+.chatContainer{
+width:95%;
+max-width:750px;
+height:88vh;
+background:white;
+border-radius:18px;
+box-shadow:0 20px 50px rgba(0,0,0,0.2);
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+.header{
+background:linear-gradient(90deg,#ffb347,#ffcc33);
+padding:16px;
+font-size:20px;
+font-weight:bold;
+text-align:center;
+color:white;
+}
+
+.chatbox{
+flex:1;
+padding:15px;
+overflow-y:auto;
+background:#fffdf6;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.msg{
+padding:12px 15px;
+border-radius:14px;
+max-width:75%;
+}
+
+.user{
+background:#ffcc33;
+align-self:flex-end;
+}
+
+.bot{
+background:#eee;
+align-self:flex-start;
+}
+
+.inputArea{
+display:flex;
+gap:8px;
+padding:10px;
+background:#fff8dc;
+}
+
+input{
+flex:1;
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+button{
+padding:12px 14px;
+border:none;
+background:#ff9f43;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+
+img{
+max-width:150px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="chatContainer">
+
+<div class="header">
+🤖 Smart AI Assistant
+</div>
+
+<div id="chatbox" class="chatbox"></div>
+
+<div class="inputArea">
+
+<input id="input" placeholder="Ask question...">
+
+<button onclick="sendMsg()">Send</button>
+
+<input type="file" onchange="detectImage(event)">
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* knowledge dataset */
+
+const knowledge={
+
+"what is ai":
+"Artificial Intelligence is technology that allows machines to think and learn.",
+
+"what is machine learning":
+"Machine learning allows computers to learn patterns from data.",
+
+"what is python":
+"Python is a popular programming language used in AI and web development.",
+
+"what is chatbot":
+"A chatbot is a program that simulates conversation with users.",
+
+"essay on ai":
+"Artificial Intelligence (AI) is a branch of computer science that aims to create intelligent machines. AI systems can perform tasks such as learning, reasoning, problem solving, perception, and language understanding. AI is used in healthcare, education, banking, and robotics. It helps automate tasks and improve efficiency."
+
+};
+
+
+/* chat functions */
+
+function sendMsg(){
+
+let text=input.value.toLowerCase();
+
+addMsg(text,"user");
+
+let reply=getAnswer(text);
+
+setTimeout(()=>addMsg(reply,"bot"),300);
+
+input.value="";
+
+}
+
+
+function getAnswer(q){
+
+if(knowledge[q]) return knowledge[q];
+
+
+/* math solver */
+
+try{
+
+if(q.includes("+")||q.includes("-")||q.includes("*")||q.includes("/")){
+
+return eval(q);
+
+}
+
+}catch{}
+
+
+/* essay detection */
+
+if(q.includes("essay")){
+
+return "Please add this topic in dataset for full essay.";
+
+}
+
+return "I am still learning. Add more data to make me smarter.";
+
+}
+
+
+function addMsg(text,type){
+
+let div=document.createElement("div");
+
+div.className="msg "+type;
+
+div.innerText=text;
+
+chatbox.appendChild(div);
+
+div.scrollIntoView();
+
+}
+
+
+/* image detection */
+
+let model;
+
+cocoSsd.load().then(m=>{
+
+model=m;
+
+bot("Image model ready");
+
+});
+
+
+function detectImage(e){
+
+let file=e.target.files[0];
+
+let img=document.createElement("img");
+
+img.src=URL.createObjectURL(file);
+
+chatbox.appendChild(img);
+
+
+model.detect(img).then(predictions=>{
+
+if(predictions.length>0){
+
+bot("I see: "+predictions[0].class);
+
+}else{
+
+bot("Not sure what image is");
+
+}
+
+});
+
+}
+
+
+function bot(t){
+
+addMsg(t,"bot");
+
+}
+
+</script>
+
+</body>
+
+</html>

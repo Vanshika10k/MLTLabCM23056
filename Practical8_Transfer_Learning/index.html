@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fruit Classifier (MobileNet)</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    text-align: center;
+    color: white;
+    padding: 40px;
+}
+
+.container {
+    background: rgba(0,0,0,0.3);
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    margin: 15px 0;
+}
+
+img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 10px;
+    border: 3px solid white;
+}
+
+button {
+    padding: 10px 20px;
+    background: #ff9800;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: grey;
+    cursor: not-allowed;
+}
+
+button:hover:enabled {
+    background: #ffa726;
+}
+
+.status {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.result-box {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.result-item {
+    background: rgba(255,255,255,0.2);
+    padding: 8px;
+    border-radius: 6px;
+    margin: 5px 0;
+}
+
+.top {
+    border: 2px solid #00ffcc;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🍎 Fruit Classifier</h1>
+
+    <input type="file" id="imageUpload" accept="image/*"><br>
+
+    <img id="preview" src="" alt="Preview">
+
+    <br><br>
+    <button id="predictBtn" onclick="predict()" disabled>Predict</button>
+
+    <div class="status" id="status">Loading model...</div>
+
+    <div class="result-box" id="results"></div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

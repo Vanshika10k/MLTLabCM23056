@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Evaluation</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #222;
+            color: white;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+        }
+        pre {
+            text-align: left;
+            background: #333;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>📊 Model Evaluation</h1>
+
+<button onclick="evaluate()">Run Evaluation</button>
+
+<h3 id="accuracy"></h3>
+
+<pre id="matrix"></pre>
+
+<script src="script.js"></script>
+
+</body>
+</html>
